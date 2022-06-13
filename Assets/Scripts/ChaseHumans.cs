@@ -10,6 +10,7 @@ public class ChaseHumans : MonoBehaviour
     Rigidbody2D rigidbody;
 
     float charSpeed = 4f;
+    int emilyWozHere = "help"
 
     void Start()
     {
