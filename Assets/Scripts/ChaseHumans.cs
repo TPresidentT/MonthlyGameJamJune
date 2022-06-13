@@ -9,6 +9,8 @@ public class ChaseHumans : MonoBehaviour
     public Transform target;
     Rigidbody2D rigidbody;
 
+    float charSpeed = 4f;
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
