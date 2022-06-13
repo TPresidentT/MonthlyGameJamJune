@@ -10,6 +10,8 @@ public class HumanMovement : MonoBehaviour
     float timerLength;
     Rigidbody2D rigidbody;
 
+    float time = 3f;
+
     void Start()
     {
         timerLength = Random.Range(2f, 3f);
