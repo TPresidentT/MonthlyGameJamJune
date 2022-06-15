@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Collider
   - Human
+  - Car
   layers:
   - Default
   - TransparentFX
