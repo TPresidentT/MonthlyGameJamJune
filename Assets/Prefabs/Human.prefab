@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4065710784982061182}
   - component: {fileID: 4065710784982061169}
   - component: {fileID: 4065710784982061168}
-  - component: {fileID: 4065710784982061171}
   m_Layer: 0
   m_Name: Human
   m_TagString: Human
@@ -136,16 +135,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &4065710784982061171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4065710784982061181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 270d786a55df1da419f9e04c3243ac83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabInfection: {fileID: 8270439072162688728, guid: 1854504d5d2bec747b6af4d2f53c67be, type: 3}
