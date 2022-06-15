@@ -9,6 +9,7 @@ public class HumanMovement : MonoBehaviour
     float directionSetTime = 0f;
     float timerLength;
     Rigidbody2D rigidbody;
+    public Rigidbody2D prefabInfection;
 
     float time = 3f;
 
@@ -37,6 +38,12 @@ public class HumanMovement : MonoBehaviour
         if ((col.gameObject.tag == "Collider") || (col.gameObject.tag == "Human"))
         {
             //Move in opposite direction
+        }
+        else
+        {
+            Instantiate(prefabInfection, transform.position, transform.rotation);
+            transform.gameObject.tag = "Zombie";
+            Destroy(gameObject);
         }
     }
 }
