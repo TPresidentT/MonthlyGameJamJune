@@ -59,8 +59,7 @@
     <Compile Include="Assets\Scripts\HumanMovement.cs" />
     <Compile Include="Assets\Scripts\SpriteCollision.cs" />
     <Compile Include="Assets\Scripts\Timer.cs" />
-    <Compile Include="Assets\Scripts\ChaseHumans.cs" />
-    <Compile Include="Assets\Scripts\ZombieChase.cs" />
+    <Compile Include="Assets\Scripts\TargetHuman.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

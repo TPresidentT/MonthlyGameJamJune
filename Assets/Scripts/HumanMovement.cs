@@ -10,7 +10,6 @@ public class HumanMovement : MonoBehaviour
     float timerLength;
     Rigidbody2D rigidbody;
     public Rigidbody2D prefabInfection;
-
     float time = 3f;
 
     void Start()
@@ -43,7 +42,11 @@ public class HumanMovement : MonoBehaviour
         {
             Instantiate(prefabInfection, transform.position, transform.rotation);
             transform.gameObject.tag = "Zombie";
-            Destroy(gameObject);
+
+            if (gameObject != null)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
