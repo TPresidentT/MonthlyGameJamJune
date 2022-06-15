@@ -4,41 +4,41 @@ using UnityEngine;
 
 public class TargetHuman : MonoBehaviour
 {
-    public float zombieSpeed = 4f;
+    float zombieSpeed = 2f;
     private GameObject[] enemies;
     private Transform targetedEnemyPosition;
     private GameObject targetedEnemy;
 
-    void Awake()
+    void FindClosestHuman()
     {
-        FindHuman();
-    }
-
-    void FindHuman()
-    {
+        //Find closest human
         enemies = GameObject.FindGameObjectsWithTag("Human");
-        targetedEnemy = enemies[Random.Range(0, enemies.Length)];
-        targetedEnemyPosition = targetedEnemy.transform;
-    }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "Human")
+        Vector2 shortestDistanceToHuman = new Vector2(1000, 1000);
+        for (int i = 0; i < enemies.Length; i++)
         {
-            FindHuman();
+            Vector2 distanceToHuman = transform.position - enemies[i].transform.position;
+            if (distanceToHuman.magnitude < shortestDistanceToHuman.magnitude)
+            {
+                shortestDistanceToHuman = transform.position - enemies[i].transform.position;
+                targetedEnemy = enemies[i];
+                targetedEnemyPosition = targetedEnemy.transform;
+            }
         }
+
+        //Find random human
+        //enemies = GameObject.FindGameObjectsWithTag("Human");
+        //targetedEnemy = enemies[Random.Range(0, enemies.Length)];
+        //targetedEnemyPosition = targetedEnemy.transform;
     }
 
     void Update()
     {
-        float step = zombieSpeed * Time.deltaTime;
-     //   transform.position = Vector2.MoveTowards(transform.position, targetedEnemy.position, step);
-        transform.position = Vector2.MoveTowards(transform.position, targetedEnemyPosition.position, step);
-
-        if (targetedEnemy.tag != "Human")
+        if (GameObject.FindGameObjectsWithTag("Human").Length > 0)
         {
-            FindHuman();
-            Debug.Log("Hit");
+            FindClosestHuman();
+
+            float step = zombieSpeed * Time.deltaTime;
+            transform.position = Vector2.MoveTowards(transform.position, targetedEnemyPosition.position, step);
         }
     }
 }
