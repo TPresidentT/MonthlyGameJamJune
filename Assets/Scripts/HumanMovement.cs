@@ -10,7 +10,18 @@ public class HumanMovement : MonoBehaviour
     float timerLength;
     Rigidbody2D rigidbody;
     public Rigidbody2D prefabInfection;
-    float time = 3f;
+    int humansToInfect = 1;
+
+    public void HumanInfection()
+    {
+        Instantiate(prefabInfection, transform.position, transform.rotation, GameObject.Find("Zombies").transform);
+        transform.gameObject.tag = "Zombie";
+
+        if (gameObject != null)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -20,16 +31,20 @@ public class HumanMovement : MonoBehaviour
 
     void Update()
     {
-        //Count down timer
-        directionSetTime -= Time.deltaTime;
-
-        if (directionSetTime <= 0)
+        if (GameObject.FindGameObjectsWithTag("Zombie").Length > 0)
         {
-            moveDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-            directionSetTime = timerLength;
-        }
+            //Count down timer
+            directionSetTime -= Time.deltaTime;
 
-        rigidbody.velocity = (new Vector2(moveDirection.x, moveDirection.y) * moveSpeed);
+            //Human movement
+            if (directionSetTime <= 0)
+            {
+                moveDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+                directionSetTime = timerLength;
+            }
+
+            rigidbody.velocity = (new Vector2(moveDirection.x, moveDirection.y) * moveSpeed);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -40,13 +55,16 @@ public class HumanMovement : MonoBehaviour
         }
         else
         {
-            Instantiate(prefabInfection, transform.position, transform.rotation);
-            transform.gameObject.tag = "Zombie";
+            HumanInfection();
+        }
+    }
 
-            if (gameObject != null)
-            {
-                Destroy(gameObject);
-            }
+    void OnMouseDown()
+    {
+        if (humansToInfect > 0)
+        {
+            HumanInfection();
+            humansToInfect -= 1;
         }
     }
 }
