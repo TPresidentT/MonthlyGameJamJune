@@ -11,7 +11,7 @@ public class HumanMovement : MonoBehaviour
     Rigidbody2D rigidbody;
     public Rigidbody2D prefabInfection;
     int humansToInfect = 1;
-
+    [SerializeField] private float rotationSpeed;
     public void HumanInfection()
     {
         Instantiate(prefabInfection, transform.position, transform.rotation, GameObject.Find("Zombies").transform);
