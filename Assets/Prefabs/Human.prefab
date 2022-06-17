@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabInfection: {fileID: 8270439072162688728, guid: 1854504d5d2bec747b6af4d2f53c67be, type: 3}
+  rotationSpeed: 0
 --- !u!50 &4065710784982061169
 Rigidbody2D:
   serializedVersion: 4
@@ -112,7 +113,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 10
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0

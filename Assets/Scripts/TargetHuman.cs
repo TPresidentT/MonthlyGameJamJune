@@ -8,7 +8,12 @@ public class TargetHuman : MonoBehaviour
     private GameObject[] enemies;
     private Transform targetedEnemyPosition;
     private GameObject targetedEnemy;
+    Rigidbody2D rb;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     void FindClosestHuman()
     {
         //Find closest human
@@ -39,6 +44,10 @@ public class TargetHuman : MonoBehaviour
 
             float step = zombieSpeed * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, targetedEnemyPosition.position, step);
+
+            Vector2 direction = (targetedEnemyPosition.position - transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            rb.rotation = angle;
         }
     }
 }
