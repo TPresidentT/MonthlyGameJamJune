@@ -9,6 +9,8 @@ public class Timer : MonoBehaviour
     //private float startTime;
     float timePassed;
     float levelTargetTime;
+    public GameObject levelPassedUI;
+    public GameObject levelFailedUI;
 
     void Start()
     {
@@ -16,7 +18,7 @@ public class Timer : MonoBehaviour
 
         //Set level clear time target
         Scene currentScene = SceneManager.GetActiveScene();
-        if (currentScene.name == "Level1Scene") { levelTargetTime = 10f; }
+        if (currentScene.name == "Level1Scene") { levelTargetTime = 1f; }
         if (currentScene.name == "Level2Scene") { levelTargetTime = 15f; }
         if (currentScene.name == "Level3Scene") { levelTargetTime = 20f; }
     }
@@ -55,11 +57,13 @@ public class Timer : MonoBehaviour
             if (timePassed <= levelTargetTime)
             {
                 //Win
+                if (levelPassedUI.activeSelf == false) { levelPassedUI.SetActive(true); }
                 Debug.Log("Level Beat");
             }
             else
             {
                 //Lose
+                if (levelFailedUI.activeSelf == false) { levelFailedUI.SetActive(true); }
                 Debug.Log("Level Not Beat, Target Time: 00:" + levelTargetTime.ToString());
             }
         }
