@@ -11,10 +11,6 @@ public class HumanMovement : MonoBehaviour
     Rigidbody2D rigidbody;
     public Rigidbody2D prefabInfection;
     int humansToInfect = 1;
-<<<<<<< HEAD
-=======
-    bool wasClicked = false;
->>>>>>> main
 
     public void HumanInfection()
     {
