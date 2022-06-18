@@ -30,4 +30,16 @@ public class ChangeScene : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+    public void LoadLevel4Scene()
+    {
+        SceneManager.LoadScene(4);
+    }
+    public void LoadLevel5Scene()
+    {
+        SceneManager.LoadScene(5);
+    }
+    public void LoadLevel6Scene()
+    {
+        SceneManager.LoadScene(6);
+    }
 }

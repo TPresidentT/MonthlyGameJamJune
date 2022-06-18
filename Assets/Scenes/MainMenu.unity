@@ -999,7 +999,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 50380980}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: LoadLevelSelectScene
+        m_MethodName: LoadLevel1Scene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
