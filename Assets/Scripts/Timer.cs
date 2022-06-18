@@ -10,17 +10,13 @@ public class Timer : MonoBehaviour
     float timePassed;
     float levelTargetTime;
     public GameObject levelPassedUI;
-    public GameObject levelFailedUI;
+    [SerializeField] Text highScoreText;
 
     void Start()
     {
         //startTime = Time.time;
-
+        UpdateHighScoreText();
         //Set level clear time target
-        Scene currentScene = SceneManager.GetActiveScene();
-        if (currentScene.name == "Level1Scene") { levelTargetTime = 1f; }
-        if (currentScene.name == "Level2Scene") { levelTargetTime = 15f; }
-        if (currentScene.name == "Level3Scene") { levelTargetTime = 20f; }
     }
 
     void Update()
@@ -54,18 +50,32 @@ public class Timer : MonoBehaviour
 
         if (GameObject.FindGameObjectsWithTag("Human").Length <= 0)
         {
-            if (timePassed <= levelTargetTime)
-            {
+            HighScore();
                 //Win
                 if (levelPassedUI.activeSelf == false) { levelPassedUI.SetActive(true); }
-                Debug.Log("Level Beat");
-            }
-            else
-            {
-                //Lose
-                if (levelFailedUI.activeSelf == false) { levelFailedUI.SetActive(true); }
-                Debug.Log("Level Not Beat, Target Time: 00:" + levelTargetTime.ToString());
-            }
+                //Debug.Log("Level Beat");
         }
     }
+    void HighScore()
+    {
+        Debug.Log(PlayerPrefs.GetFloat("HighScore"));
+        timePassed = Mathf.Round(timePassed * 100f) / 100f;
+        Debug.Log(timePassed);
+        if (timePassed < PlayerPrefs.GetFloat("HighScore", 100))
+        {
+            PlayerPrefs.SetFloat("HighScore", timePassed);
+            PlayerPrefs.GetFloat("HighScore");
+            UpdateHighScoreText();
+
+            Debug.Log(timePassed);
+            Debug.Log(PlayerPrefs.GetFloat("HighScore"));
+        }
+   
+    }
+
+    void UpdateHighScoreText()
+    {
+        highScoreText.text = $"HighScore: {PlayerPrefs.GetFloat("HighScore", 0)}";
+    }
+
 }
