@@ -11,7 +11,8 @@ public class HumanMovement : MonoBehaviour
     Rigidbody2D rigidbody;
     public Rigidbody2D prefabInfection;
     int humansToInfect = 1;
-    [SerializeField] private float rotationSpeed;
+    bool wasClicked = false;
+
     public void HumanInfection()
     {
         Instantiate(prefabInfection, transform.position, transform.rotation, GameObject.Find("Zombies").transform);
@@ -61,10 +62,14 @@ public class HumanMovement : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (humansToInfect > 0)
+     //   if (!wasClicked == true)
+        if (humansToInfect >= 0)
         {
             HumanInfection();
-            humansToInfect -= 1;
+       //     wasClicked = false;
+
+           // wasClicked = true;
+             humansToInfect -= 1;
         }
     }
 }
