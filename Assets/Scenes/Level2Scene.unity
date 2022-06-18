@@ -3937,6 +3937,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 559236127}
+  levelPassedUI: {fileID: 0}
+  levelFailedUI: {fileID: 0}
 --- !u!4 &1554084765
 Transform:
   m_ObjectHideFlags: 0
