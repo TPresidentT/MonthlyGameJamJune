@@ -11,6 +11,10 @@ public class HumanMovement : MonoBehaviour
     Rigidbody2D rigidbody;
     public Rigidbody2D prefabInfection;
     int humansToInfect = 1;
+<<<<<<< HEAD
+=======
+    bool wasClicked = false;
+>>>>>>> main
 
     public void HumanInfection()
     {
@@ -61,10 +65,14 @@ public class HumanMovement : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (humansToInfect > 0)
+     //   if (!wasClicked == true)
+        if (humansToInfect >= 0)
         {
             HumanInfection();
-            humansToInfect -= 1;
+       //     wasClicked = false;
+
+           // wasClicked = true;
+             humansToInfect -= 1;
         }
     }
 }
